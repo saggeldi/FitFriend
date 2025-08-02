@@ -1,49 +1,48 @@
 package com.shageldi.fitfriend
 
-import androidx.compose.animation.AnimatedVisibility
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.safeContentPadding
-import androidx.compose.material3.Button
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Text
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import org.jetbrains.compose.resources.painterResource
+import cafe.adriel.lyricist.Lyricist
+import cafe.adriel.lyricist.rememberStrings
+import com.shageldi.fitfriend.language.EnStrings
+import com.shageldi.fitfriend.language.LocalLyricist
+import com.shageldi.fitfriend.language.RuStrings
+import com.shageldi.fitfriend.language.Strings
+import com.shageldi.fitfriend.language.TkStrings
+import com.shageldi.fitfriend.ui.navigation.PreferencesManager
+import com.shageldi.fitfriend.ui.navigation.RootNavigation
+import com.shageldi.fitfriend.ui.navigation.ThemeType
+import com.shageldi.fitfriend.ui.theme.LocalAppColorSchema
+import com.shageldi.fitfriend.ui.theme.appDarkColorSchema
+import com.shageldi.fitfriend.ui.theme.appLightColorSchema
+
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
-import fitfriend.composeapp.generated.resources.Res
-import fitfriend.composeapp.generated.resources.compose_multiplatform
 
 @Composable
-@Preview
 fun App() {
-    MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
-        Column(
-            modifier = Modifier
-                .background(MaterialTheme.colorScheme.primaryContainer)
-                .safeContentPadding()
-                .fillMaxSize(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-        ) {
-            Button(onClick = { showContent = !showContent }) {
-                Text("Click me!")
+    val preferencesManager = remember { PreferencesManager() }
+    val colorSchemeState = remember {
+        mutableStateOf(
+            when (preferencesManager.getTheme()) {
+                ThemeType.DARK -> appDarkColorSchema
+                else -> appLightColorSchema
             }
-            AnimatedVisibility(showContent) {
-                val greeting = remember { Greeting().greet() }
-                Column(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                ) {
-                    Image(painterResource(Res.drawable.compose_multiplatform), null)
-                    Text("Compose: $greeting")
-                }
-            }
-        }
+        )
+    }
+
+    val currentLocale = preferencesManager.getLocale() ?: "en"
+
+    val lyricist = rememberStrings(
+        translations = mapOf(
+            "en" to EnStrings,
+            "ru" to RuStrings,
+            "tk" to TkStrings
+        ),
+        defaultLanguageTag = "en",
+        currentLanguageTag = currentLocale
+    )
+
+    CompositionLocalProvider(LocalAppColorSchema provides colorSchemeState, LocalLyricist provides lyricist) {
+        RootNavigation()
     }
 }
