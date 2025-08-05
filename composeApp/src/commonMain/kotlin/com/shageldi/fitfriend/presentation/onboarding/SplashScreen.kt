@@ -27,11 +27,12 @@ import org.jetbrains.compose.resources.painterResource
 fun SplashScreen() {
     val colorSchemeState = LocalAppColorSchema.current
     val strings = LocalLyricist.current.strings
-    // Auto switch to dark theme after a delay
-    LaunchedEffect(Unit) {
 
-        colorSchemeState.value = appDarkColorSchema
-    }
+
+//    LaunchedEffect(Unit) {
+//
+//        colorSchemeState.value = appDarkColorSchema
+//    }
 
     Box(
         modifier = Modifier

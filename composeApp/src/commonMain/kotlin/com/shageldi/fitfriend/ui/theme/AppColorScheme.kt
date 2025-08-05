@@ -39,7 +39,7 @@ class AppColorScheme(
 )
 
 val appLightColorSchema = AppColorScheme(
-    mainColor = Color(0xFF42D254),
+    mainColor = Color(0xFFBBF246),
     shade1Color = Color(0xFFF6F8FE),
     shade2Color = Color(0xFF5B87EF),
     gradient1 = listOf(
@@ -87,7 +87,7 @@ val appLightColorSchema = AppColorScheme(
 )
 
 val appDarkColorSchema = AppColorScheme(
-    mainColor = Color(0xFFE6E6E6),
+    mainColor = Color(0xFFBBF246),
     shade1Color = Color(0xFF1F1F1F),
     shade2Color = Color(0xFF262626),
     gradient1 = listOf(

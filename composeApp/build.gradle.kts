@@ -59,6 +59,7 @@ kotlin {
             // Compose & UI
             implementation(libs.io.coil.kt.coil3)
             implementation(libs.material)
+            implementation(libs.coil.compose)
 
             // DataStore
             implementation(libs.datastore.preferences)

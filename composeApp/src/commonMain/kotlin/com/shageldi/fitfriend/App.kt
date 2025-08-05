@@ -25,11 +25,10 @@ fun App() {
         mutableStateOf(
             when (preferencesManager.getTheme()) {
                 ThemeType.DARK -> appDarkColorSchema
-                else -> appLightColorSchema
+                else -> appDarkColorSchema
             }
         )
     }
-
     val currentLocale = preferencesManager.getLocale() ?: "en"
 
     val lyricist = rememberStrings(

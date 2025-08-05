@@ -20,11 +20,13 @@ backHandler = "1.8.2"
 navigation = "2.9.0-beta04"
 
   # Compose & UI
-coil-svg = "3.3.0"
+coil-svg = "3.2.0"
+coil = "3.2.0"
 material = "1.12.0"
 material-icons = "1.7.8"
 material3 = "1.3.2"
 material3-adaptive-navigation = "1.5.0-alpha01"
+
  # splashscreen
 splashscreen = "1.0.1"
 
@@ -32,7 +34,7 @@ splashscreen = "1.0.1"
 koin = "4.1.0"
 
  # Data
-ksp = "2.1.21-2.0.1"
+ksp = "2.2.0-2.0.2"
 datastore = "1.1.7"
 lifecycle-runtime = "2.7.0"
 russhwolf = "1.3.0"
@@ -72,6 +74,7 @@ com-russhwolf = { group = "com.russhwolf", name = "multiplatform-settings-no-arg
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" , version.ref = "material-icons"}
 io-coil-kt-coil3 = { group = "io.coil-kt.coil3", name = "coil-svg" , version.ref = "coil-svg"}
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coil" }
 
  # splashscreen
 core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "splashscreen" }
