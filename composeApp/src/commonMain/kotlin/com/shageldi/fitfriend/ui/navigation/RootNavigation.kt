@@ -9,8 +9,10 @@ import androidx.navigation.compose.rememberNavController
 import kotlinx.coroutines.delay
 import androidx.compose.runtime.*
 import androidx.navigation.compose.composable
+import com.shageldi.fitfriend.presentation.auth.AuthScreen
 import com.shageldi.fitfriend.presentation.auth.LoginScreen
 import com.shageldi.fitfriend.presentation.auth.SignupScreen
+import com.shageldi.fitfriend.presentation.main.MainScreen
 import com.shageldi.fitfriend.presentation.onboarding.OnboardingContent
 import com.shageldi.fitfriend.presentation.onboarding.SplashScreen
 
@@ -28,7 +30,7 @@ fun RootNavigation() {
 
         startDestination = when {
             !onboarded -> AppRoutes.ONBOARDING
-            !loggedIn -> AppRoutes.LOGIN
+            !loggedIn -> AppRoutes.AUTH
             else -> AppRoutes.HOME
         }
     }
@@ -41,10 +43,21 @@ fun RootNavigation() {
         composable(AppRoutes.ONBOARDING) {
             OnboardingContent(onFinish = {
                 preferencesManager.setOnboardingCompleted(true)
-                navController.navigate(AppRoutes.LOGIN) {
+                navController.navigate(AppRoutes.AUTH) {
                     popUpTo(AppRoutes.ONBOARDING) { inclusive = true }
                 }
             })
+        }
+
+        composable(AppRoutes.AUTH) {
+            AuthScreen(
+                onSignIn = {
+                    navController.navigate(AppRoutes.LOGIN)
+                },
+                onSignUp = {
+                    navController.navigate(AppRoutes.SIGNUP)
+                }
+            )
         }
 
         composable(AppRoutes.LOGIN) {
@@ -62,12 +75,21 @@ fun RootNavigation() {
         }
 
         composable(AppRoutes.SIGNUP) {
-            SignupScreen(onSignupComplete = {
-                preferencesManager.setLoggedIn(true)
-                navController.navigate(AppRoutes.HOME) {
-                    popUpTo(AppRoutes.SIGNUP) { inclusive = true }
-                }
-            })
+            SignupScreen(onLogin = {
+                navController.navigate(AppRoutes.LOGIN)
+            },
+                onSignup = {
+
+                    preferencesManager.setLoggedIn(true)
+                    navController.navigate(AppRoutes.HOME) {
+                        popUpTo(AppRoutes.LOGIN) { inclusive = true }
+                    }
+                })
+        }
+
+        composable(AppRoutes.HOME) {
+            MainScreen()
+
         }
 
 

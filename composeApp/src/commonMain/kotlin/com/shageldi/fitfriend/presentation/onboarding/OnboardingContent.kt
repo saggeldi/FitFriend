@@ -86,6 +86,8 @@ fun OnboardingContent(onFinish: () -> Unit) {
     val currentPage = pagerState.currentPage
     val lastPageIndex = onboardingItem.lastIndex
 
+
+
     LaunchedEffect(pagerState) {
         snapshotFlow { pagerState.currentPage to pagerState.currentPageOffsetFraction }
             .collect { (page, offsetFraction) ->
@@ -196,7 +198,7 @@ fun OnboardingContent(onFinish: () -> Unit) {
                         )
                     ) {
                         AnimatedContent(
-                            targetState = if (currentPage == 0) "Get Started" else "14 Day Free Trial",
+                            targetState = if (currentPage == 0) strings.getStarted else strings.freeTrial,
                             transitionSpec = {
                                 slideInHorizontally(
                                     initialOffsetX = { it },

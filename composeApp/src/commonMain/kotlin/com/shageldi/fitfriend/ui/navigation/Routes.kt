@@ -11,4 +11,10 @@ object  AppRoutes {
     const val LOGIN = "login"
     const val SIGNUP = "signup"
 
+    const val AUTH = "auth"
+
+    const val DASHBOARD = "dashboard"
+    const val  EXPLORE = "explore"
+    const val ANALYTICS = "analytics"
+    const val PROFILE = "profile"
 }

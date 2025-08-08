@@ -10,42 +10,98 @@ import cafe.adriel.lyricist.LyricistStrings
 
 data class Strings(
     val welcome: String,
-    val countApples: (Int) -> String,
-    val annotated: androidx.compose.ui.text.AnnotatedString,
+    val onboardingTitle1: String,
+    val onboardingDesc1: String,
+    val onboardingTitle2: String,
+    val onboardingDesc2: String,
+    val onboardingTitle3: String,
+    val onboardingDesc3: String,
+    val onboardingTitle4: String,
+    val onboardingDesc4: String,
+    val getStarted: String,
+    val freeTrial: String,
+    // CTA Section
+    val noMoreExcuses: String,
+    val doItNow: String,
+    val achieveGoals: String,
+    val signIn: String,
+    val signUp: String,
 )
 
 @LyricistStrings(languageTag = "en", default = true)
 val EnStrings = Strings(
     welcome = "Welcome!",
-    countApples = { count -> "You have $count apples" },
-    annotated = buildAnnotatedString {
-        append("This is ")
-        pushStyle(SpanStyle(color = Color.Blue, fontWeight = FontWeight.Bold))
-        append("annotated")
-        pop()
-    }
+    onboardingTitle1 = "Welcome!",
+    onboardingDesc1 = "Your fitness journey starts here. Let’s move smarter, together.",
+
+    onboardingTitle2 = "Discover",
+    onboardingDesc2 = "Explore intelligent workouts and personalized insights just for you.",
+
+    onboardingTitle3 = "Connect",
+    onboardingDesc3 = "Join a vibrant community. Stay inspired, stay consistent.",
+
+    onboardingTitle4 = "Achieve",
+    onboardingDesc4 = "Track progress, smash goals, and enjoy every step of your transformation.",
+
+    getStarted = "Get Started",
+    freeTrial = "14 Day Free Trial",
+
+    // CTA Section
+    noMoreExcuses = "NO MORE EXCUSES |",
+    doItNow = "DO IT NOW",
+    achieveGoals = "Achieve your fitness goals with our expert trainers! Join us for personalized workouts that get results.",
+    signIn = "SIGN IN",
+    signUp = "SIGN UP"
 )
 
 @LyricistStrings(languageTag = "ru")
 val RuStrings = Strings(
     welcome = "Добро пожаловать!",
-    countApples = { count -> "У вас $count яблок" },
-    annotated = buildAnnotatedString {
-        append("Это ")
-        pushStyle(SpanStyle(color = Color.Red, fontWeight = FontWeight.Bold))
-        append("аннотировано")
-        pop()
-    }
+    onboardingTitle1 = "Welcome!",
+    onboardingDesc1 = "Your fitness journey starts here. Let’s move smarter, together.",
+
+    onboardingTitle2 = "Discover",
+    onboardingDesc2 = "Explore intelligent workouts and personalized insights just for you.",
+
+    onboardingTitle3 = "Connect",
+    onboardingDesc3 = "Join a vibrant community. Stay inspired, stay consistent.",
+
+    onboardingTitle4 = "Achieve",
+    onboardingDesc4 = "Track progress, smash goals, and enjoy every step of your transformation.",
+
+    getStarted = "Get Started",
+    freeTrial = "14 Day Free Trial",
+    // CTA Section
+    noMoreExcuses = "NO MORE EXCUSES |",
+    doItNow = "DO IT NOW",
+    achieveGoals = "Achieve your fitness goals with our expert trainers! Join us for personalized workouts that get results.",
+    signIn = "SIGN IN",
+    signUp = "SIGN UP"
+
 )
 
 @LyricistStrings(languageTag = "tk")
 val TkStrings = Strings(
     welcome = "Hoş geldiňiz!",
-    countApples = { count -> "$count sany almaňyz bar" },
-    annotated = buildAnnotatedString {
-        append("Bu ")
-        pushStyle(SpanStyle(color = Color.Green, fontWeight = FontWeight.Bold))
-        append("bellikli")
-        pop()
-    }
+    onboardingTitle1 = "Welcome!",
+    onboardingDesc1 = "Your fitness journey starts here. Let’s move smarter, together.",
+
+    onboardingTitle2 = "Discover",
+    onboardingDesc2 = "Explore intelligent workouts and personalized insights just for you.",
+
+    onboardingTitle3 = "Connect",
+    onboardingDesc3 = "Join a vibrant community. Stay inspired, stay consistent.",
+
+    onboardingTitle4 = "Achieve",
+    onboardingDesc4 = "Track progress, smash goals, and enjoy every step of your transformation.",
+
+    getStarted = "Get Started",
+    freeTrial = "14 Day Free Trial",
+    // CTA Section
+    noMoreExcuses = "NO MORE EXCUSES |",
+    doItNow = "DO IT NOW",
+    achieveGoals = "Achieve your fitness goals with our expert trainers! Join us for personalized workouts that get results.",
+    signIn = "SIGN IN",
+    signUp = "SIGN UP"
+
 )

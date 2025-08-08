@@ -26,7 +26,13 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            freeCompilerArgs += listOf("-Xbinary=bundleId=com.example.composeapp")
         }
+
+//        iosTarget.binaries.framework {
+//            baseName = "ComposeApp"
+//            isStatic = true
+//        }
     }
     
     sourceSets {
@@ -119,4 +125,6 @@ dependencies {
 //    ksp (libs.lyricist.processor.xml)
 
 }
+
+
 
