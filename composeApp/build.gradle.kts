@@ -7,6 +7,7 @@ plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    alias(libs.plugins.ksp)
 }
 
 kotlin {
@@ -25,13 +26,25 @@ kotlin {
         iosTarget.binaries.framework {
             baseName = "ComposeApp"
             isStatic = true
+            freeCompilerArgs += listOf("-Xbinary=bundleId=com.example.composeapp")
         }
+
+//        iosTarget.binaries.framework {
+//            baseName = "ComposeApp"
+//            isStatic = true
+//        }
     }
     
     sourceSets {
         androidMain.dependencies {
             implementation(compose.preview)
             implementation(libs.androidx.activity.compose)
+
+            // Material3
+            implementation(libs.material3)
+            implementation(libs.material3.window.size)
+            implementation(libs.material3.adaptive.navigation)
+
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -43,6 +56,34 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
             implementation(projects.shared)
+
+
+            // Ktor
+            implementation(libs.ktor.client.core)
+//            implementation(libs.ktor.client.darwin)
+
+            // Compose & UI
+            implementation(libs.io.coil.kt.coil3)
+            implementation(libs.material)
+            implementation(libs.coil.compose)
+
+            // DataStore
+            implementation(libs.datastore.preferences)
+//            implementation(libs.lifecycle.runtime)
+            implementation(libs.com.russhwolf)
+
+            // Koin
+            implementation(libs.koin.core)
+
+            // Navigation
+            implementation(libs.backHandler)
+            implementation(libs.navigation)
+
+            // Language
+            implementation(libs.lyricist)
+
+
+
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
@@ -79,5 +120,11 @@ android {
 
 dependencies {
     debugImplementation(compose.uiTooling)
+    ksp(libs.lyricist.processor)
+    add("kspCommonMainMetadata", "cafe.adriel.lyricist:lyricist-processor:1.7.0")
+//    ksp (libs.lyricist.processor.xml)
+
 }
+
+
 
