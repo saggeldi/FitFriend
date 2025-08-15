@@ -78,7 +78,8 @@ import fitfriend.composeapp.generated.resources.Res
 @Composable
 fun BottomNavigationBar(
     navController: NavHostController,
-    items: List<BottomNavScreen>
+    items: List<BottomNavScreen>,
+    modifier: Modifier = Modifier
 ) {
     val currentRoute = navController.currentBackStackEntryAsState().value?.destination?.route
     val colorSchemeState = LocalAppColorSchema.current
@@ -94,9 +95,8 @@ fun BottomNavigationBar(
     )
 
     Box(
-        Modifier
-            .fillMaxWidth()
-            .padding(horizontal = 24.dp, vertical = 12.dp),
+        modifier = modifier
+            .fillMaxWidth(),
         contentAlignment = Alignment.Center
     ) {
         Surface(
@@ -108,7 +108,7 @@ fun BottomNavigationBar(
                 ),
             shape = RoundedCornerShape(32.dp),
             color = Color(0xFF0F1113),
-            shadowElevation = 10.dp
+
         ) {
             Row(
                 modifier = Modifier
